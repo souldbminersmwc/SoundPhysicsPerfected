@@ -6,6 +6,11 @@
   "client": [
   ],
   "mixins": [
+    "client.PlayerEntityMixin",
+    "client.SoundEventMixin",
+    "client.SoundSystemMixin",
+    "client.SourceAccessor",
+    "client.SourceManagerAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

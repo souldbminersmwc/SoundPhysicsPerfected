@@ -15,12 +15,7 @@
   "icon": "assets/sound_physics_perfected/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.redsmods.fabric.ExampleModFabric"
-    ],
-    "client": [
-      "com.redsmods.fabric.client.ExampleModFabricClient"
-    ]
+    
   },
   "mixins": [
     "sound_physics_perfected.mixins.json"
