@@ -7,6 +7,14 @@ architectury {
     fabric()
 }
 
+repositories {
+    maven { url "https://maven.shedaniel.me/" }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
+}
+
 configurations {
     common {
         canBeResolved = true
@@ -36,13 +44,13 @@ dependencies {
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 
-//    // ModMenu for Fabric 1.21.1
-//    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
-//
-//    // Cloth Config for Fabric 1.21.1
-//    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-//        exclude(group: "net.fabricmc.fabric-api")
-//    }
+    // ModMenu for Fabric 1.21.1
+    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+
+    // Cloth Config for Fabric 1.21.1
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
 }
 
 processResources {
