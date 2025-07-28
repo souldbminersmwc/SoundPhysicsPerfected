@@ -72,7 +72,7 @@ public abstract class SoundSystemMixin {
 
         try {
             WeightedSoundSet weightedSoundSet = sound.getSoundSet(this.loader); // load pitches and whatnot into the sound data
-            if (!(sound instanceof RedPositionedSoundInstance || sound instanceof RedTickableInstance || sound instanceof RedPermeatedSoundInstance) && sound.getAttenuationType() != SoundInstance.AttenuationType.NONE) { // !replayList.contains(redSoundData)
+            if (!(sound instanceof RedPositionedSoundInstance || sound instanceof TickableSoundInstance || sound instanceof RedPermeatedSoundInstance) && sound.getAttenuationType() != SoundInstance.AttenuationType.NONE) { // !replayList.contains(redSoundData)
                 // Get sound coordinates
                 double soundX = sound.getX();
                 double soundY = sound.getY();
@@ -158,7 +158,6 @@ public abstract class SoundSystemMixin {
     @ModifyVariable(method = "stop(Lnet/minecraft/client/sound/SoundInstance;)V", at = @At("HEAD"), argsOnly = true)
     private SoundInstance modifySoundParameter(SoundInstance sound) {
         if (!efxInitialized) return sound; // fx aren't init, most likely permeation isn't playing
-        System.out.println("Stop called for: " + sound.getSound().getLocation());
         soundQueue.remove(sound);
         SoundInstance customSound = soundInstanceMap.get(sound);
         SoundInstance soundPermeation = soundPermInstanceMap.get(sound);
