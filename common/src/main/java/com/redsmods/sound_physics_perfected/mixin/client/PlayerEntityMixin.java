@@ -1,7 +1,6 @@
-package com.redsmods.mixin.client;
+package com.redsmods.sound_physics_perfected.mixin.client;
 
-import com.redsmods.RaycastingHelper;
-import net.minecraft.entity.Entity;
+import com.redsmods.sound_physics_perfected.RaycastingHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;

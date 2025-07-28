@@ -1,4 +1,4 @@
-package com.redsmods;
+package com.redsmods.sound_physics_perfected;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

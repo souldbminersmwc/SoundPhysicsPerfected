@@ -1,9 +1,11 @@
-package com.redsmods.mixin.client;
+package com.redsmods.sound_physics_perfected.mixin.client;
 
-import com.redsmods.storageclasses.SoundData;
-import com.redsmods.wrappers.RedPermeatedSoundInstance;
-import com.redsmods.wrappers.RedPositionedSoundInstance;
-import com.redsmods.wrappers.RedTickableInstance;
+import com.redsmods.sound_physics_perfected.RaycastingHelper;
+import com.redsmods.sound_physics_perfected.RedSoundInstance;
+import com.redsmods.sound_physics_perfected.storageclasses.SoundData;
+import com.redsmods.sound_physics_perfected.wrappers.RedPermeatedSoundInstance;
+import com.redsmods.sound_physics_perfected.wrappers.RedPositionedSoundInstance;
+import com.redsmods.sound_physics_perfected.wrappers.RedTickableInstance;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.*;
 import net.minecraft.util.math.Vec3d;
@@ -18,14 +20,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import com.redsmods.*;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-import static com.redsmods.RaycastingHelper.*;
+import static com.redsmods.sound_physics_perfected.RaycastingHelper.*;
 import static org.joml.Math.lerp;
 import static org.lwjgl.openal.EXTEfx.*;
 

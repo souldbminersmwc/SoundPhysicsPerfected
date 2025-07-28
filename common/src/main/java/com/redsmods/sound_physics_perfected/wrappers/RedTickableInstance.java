@@ -1,13 +1,13 @@
-package com.redsmods.wrappers;
+package com.redsmods.sound_physics_perfected.wrappers;
 
 import net.minecraft.client.sound.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
-import com.redsmods.RaycastingHelper;
+import com.redsmods.sound_physics_perfected.RaycastingHelper;
 import org.jetbrains.annotations.Nullable;
 
-import static com.redsmods.RaycastingHelper.TICK_RATE;
+import static com.redsmods.sound_physics_perfected.RaycastingHelper.TICK_RATE;
 
 public class RedTickableInstance implements TickableSoundInstance {
     private final Identifier soundID;

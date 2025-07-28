@@ -1,4 +1,4 @@
-package com.redsmods;
+package com.redsmods.sound_physics_perfected;
 
 import net.minecraft.client.sound.Sound;
 import net.minecraft.client.sound.SoundInstance;

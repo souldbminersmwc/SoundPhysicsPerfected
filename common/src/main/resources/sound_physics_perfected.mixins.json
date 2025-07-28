@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.redsmods.mixin",
+  "package": "com.redsmods.sound_physics_perfected.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [

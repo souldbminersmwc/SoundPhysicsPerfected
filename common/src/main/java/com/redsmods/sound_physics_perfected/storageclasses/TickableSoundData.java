@@ -1,4 +1,4 @@
-package com.redsmods.storageclasses;
+package com.redsmods.sound_physics_perfected.storageclasses;
 
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.util.math.Vec3d;

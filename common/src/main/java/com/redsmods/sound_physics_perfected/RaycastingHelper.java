@@ -1,5 +1,8 @@
-package com.redsmods;
+package com.redsmods.sound_physics_perfected;
 
+import com.redsmods.sound_physics_perfected.storageclasses.*;
+import com.redsmods.sound_physics_perfected.wrappers.RedPermeatedSoundInstance;
+import com.redsmods.sound_physics_perfected.wrappers.RedPositionedSoundInstance;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.SoundInstance;
@@ -14,10 +17,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
-import com.redsmods.storageclasses.*;
-import com.redsmods.wrappers.RedPermeatedSoundInstance;
-import com.redsmods.wrappers.RedPositionedSoundInstance;
-import com.redsmods.wrappers.RedTickableInstance;
+import com.redsmods.sound_physics_perfected.wrappers.RedTickableInstance;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
