@@ -1,15 +1,20 @@
-name: Bug Report / Feature Request
-description: File a bug report / feature request
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+assignees: []
+
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
+
   - type: dropdown
     id: modLoader
     attributes:
       label: Mod Loader
-      description: Which Modloader are you using
+      description: Which Mod Loader are you using?
       options:
         - Fabric
         - NeoForge
@@ -17,6 +22,7 @@ body:
       default: 0
     validations:
       required: true
+
   - type: input
     id: modVersion
     attributes:
@@ -24,16 +30,18 @@ body:
       placeholder: 1.0.0
     validations:
       required: true
+
   - type: textarea
-  id: what-happened
-  attributes:
-    label: What is the bug?
-    description: Put expected behavior here too.
-  validations:
-    required: true
+    id: what-happened
+    attributes:
+      label: What is the bug?
+      description: What happened and what did you expect?
+    validations:
+      required: true
+
   - type: textarea
     id: logs
     attributes:
       label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      description: Paste any relevant log output. No need to use backticks.
       render: shell
