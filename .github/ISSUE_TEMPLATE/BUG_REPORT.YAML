@@ -1,4 +1,4 @@
-name: General Form
+name: Bug Report / Feature Request
 description: File a bug report / feature request
 body:
   - type: markdown
