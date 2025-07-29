@@ -1,0 +1,39 @@
+name: General Form
+description: File a bug report / feature request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: modLoader
+    attributes:
+      label: Mod Loader
+      description: Which Modloader are you using
+      options:
+        - Fabric
+        - NeoForge
+        - Synatra Connector
+        default: 0
+    validations:
+      required: true
+  - type: input
+    id: modVersion
+    attributes:
+      label: Mod Version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: textarea
+  id: what-happened
+  attributes:
+    label: What is the bug?
+    description: Put expected behavior here too.
+  validations:
+    required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
