@@ -14,7 +14,7 @@ body:
         - Fabric
         - NeoForge
         - Synatra Connector
-        default: 0
+      default: 0
     validations:
       required: true
   - type: input
