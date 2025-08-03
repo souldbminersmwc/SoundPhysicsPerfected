@@ -341,9 +341,9 @@ public abstract class SoundSystemMixin {
 
             float wallDistance = (float) (RaycastingHelper.getDistanceFromWallEcho() / RaycastingHelper.getDistanceFromWallEchoDenom());
             float occlusionPercent = (float) RaycastingHelper.getReverbStrength() / RaycastingHelper.getReverbDenom();
+            occlusionPercent = 1.0f - occlusionPercent;
             float outdoorLeakPercent = (float) RaycastingHelper.getOutdoorLeak() / RaycastingHelper.getOutdoorLeakDenom();
-
-//            System.out.println("REVERB DEBUG: " + occlusionPercent +" " + wallDistance + " " + outdoorLeakPercent);
+            outdoorLeakPercent = outdoorLeakPercent * 2;
 
             float distanceMeters     = clamp(wallDistance, 1.0f, 100.0f);
             occlusionPercent   = 1 - clamp(occlusionPercent+outdoorLeakPercent, 0.0f, 1.0f);
@@ -385,8 +385,8 @@ public abstract class SoundSystemMixin {
             alEffectf(reverbEffect, AL_EAXREVERB_LATE_REVERB_DELAY,  lateReverbDelay);
             alEffectf(reverbEffect, AL_EAXREVERB_REFLECTIONS_GAIN,   reflectionsGain);
             alEffectf(reverbEffect, AL_EAXREVERB_LATE_REVERB_GAIN,   lateReverbGain);
-            if (outdoorLeakPercent < 0.95)
-                AL11.alSource3i(sourceId, EXTEfx.AL_AUXILIARY_SEND_FILTER, auxFXSlot, 0, sendFilter);        } catch (Exception e) {
+            AL11.alSource3i(sourceId, EXTEfx.AL_AUXILIARY_SEND_FILTER, auxFXSlot, 0, sendFilter);
+        } catch (Exception e) {
         }
     }
 
