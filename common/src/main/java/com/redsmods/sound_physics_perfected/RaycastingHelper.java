@@ -15,9 +15,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import com.redsmods.sound_physics_perfected.storageclasses.*;
-import com.redsmods.sound_physics_perfected.wrappers.RedPermeatedSoundInstance;
-import com.redsmods.sound_physics_perfected.wrappers.RedPositionedSoundInstance;
-import com.redsmods.sound_physics_perfected.wrappers.RedTickableInstance;
+import com.redsmods.sound_physics_perfected.wrappers.*;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -204,7 +202,7 @@ public class RaycastingHelper {
                 ((RedTickableInstance) originalSound).setPos(targetPosition);
                 ((RedTickableInstance) originalSound).setVolume(Math.max(0.01f, Math.min(1.0f, adjustedVolume)));
                 return;
-            } else if (((RedSoundInstance) originalSound).getOriginal() instanceof TickableSoundInstance) {
+            } else if (((RedSoundInstance) originalSound) instanceof TickableSoundInstance) {
                 newSound = new RedTickableInstance(soundId,originalSound.getSound(),originalSound.getCategory(),targetPosition,Math.max(0.01f, Math.min(1.0f, adjustedVolume)),Math.max(0.5f, Math.min(2.0f, adjustedPitch)),originalSound);
             } else {
                 newSound = new RedTickableInstance(soundId,originalSound.getSound(),originalSound.getCategory(),targetPosition,Math.max(0.01f, Math.min(1.0f, adjustedVolume)),Math.max(0.5f, Math.min(2.0f, adjustedPitch)),originalSound);
@@ -351,9 +349,9 @@ public class RaycastingHelper {
 
         SoundData hitEntity = null;
 
-        castGreenRay(world, player, currentPos, soundQueue, 0, initialDirection); // cast from player directly to check if there is a direct line of sight
+        castGreenRay(world, player, startPos, soundQueue, totalDistanceTraveled, initialDirection);
         if (ENABLE_PERMEATION)
-            castRedRay(world, player, currentPos, soundQueue, 0, initialDirection);
+            castRedRay(world, player, startPos, soundQueue, totalDistanceTraveled, initialDirection);
 
         for (int bounce = 0; bounce <= MAX_BOUNCES && remainingDistance > 0; bounce++) {
             double BounceAbsMult = Math.pow(0.7, bounce);
@@ -403,9 +401,9 @@ public class RaycastingHelper {
                 for (SoundData soundEntity : weatherQueue) {
                     double weight;
                     if (ATTENUATION_TYPE == ATTENUATION_TYPE.INVERSE_SQUARE)
-                        weight = 1.0 / (Math.max(totalDistanceTraveled - segmentDistance, 0.1) * Math.max(totalDistanceTraveled - segmentDistance, 0.1));
+                        weight = 1.0 / (Math.max(totalDistanceTraveled - segmentTraveled, 0.1) * Math.max(totalDistanceTraveled - segmentTraveled, 0.1));
                     else
-                        weight = 1.0 / Math.max(totalDistanceTraveled - segmentDistance, 0.1);
+                        weight = 1.0 / Math.max(totalDistanceTraveled - segmentTraveled, 0.1);
 
                     RaycastResult GreenRayResult = new RaycastResult(
                             maxTotalDistance,
@@ -427,9 +425,10 @@ public class RaycastingHelper {
                 currentDirection = reflectedDirection;
                 remainingDistance -= segmentTraveled;
 
-                reverbDenom.incrementAndGet();
                 outdoorLeak.incrementAndGet();
                 outdoorLeakDenom.incrementAndGet();
+
+                return null; // make it so it doesn't continue bouncing bc it just doesn't work currently.
             }
         }
 
@@ -483,6 +482,9 @@ public class RaycastingHelper {
         for (RedTickableInstance soundEntity : tickQueue) {
             Vec3d entityCenter = soundEntity.getOriginalPosition();
             double distanceToEntity = currentPos.distanceTo(entityCenter);
+
+            if (distanceToEntity + currentDistance > 16 * soundEntity.getOriginalVolume())
+                continue;
 
             RaycastContext raycastContext = new RaycastContext(
                     currentPos,

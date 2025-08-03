@@ -15,13 +15,13 @@ public class Config {
     private static final Path CONFIG_FILE = Platform.getConfigFolder().resolve("SoundPhysicsPerfected.json");
 
     // RaysCast setting
-    public int raysCast = 128;
+    public int raysCast = 1000;
     public int raysBounced = 3;
     public boolean reverbEnabled = true;
     public boolean permeationEnabled = true;
     public int maxRayLength = 4; // chunks
     public float SoundMult = 1; // make it just work like default Minecraft for lag helping :)
-    public int tickRate = 5; // once every 5 ticks
+    public int tickRate = 2; // once every 2 ticks bc i want poor people's pcs to burn
     public RedsAttenuationType attenuationType = RedsAttenuationType.INVERSE_SQUARE;
 
     public static Config getInstance() {

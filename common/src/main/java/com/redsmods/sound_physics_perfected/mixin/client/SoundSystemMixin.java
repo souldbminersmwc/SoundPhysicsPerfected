@@ -270,7 +270,7 @@ public abstract class SoundSystemMixin {
             System.out.println("Reverb system initialized successfully");
 
         } catch (Exception e) {
-            System.err.println("Failed to initialize reverb: " + e.getMessage());
+            // ignore failed reverb init
         }
     }
 
@@ -297,7 +297,7 @@ public abstract class SoundSystemMixin {
      * This is a brute-force approach that works when source tracking is difficult
      */
     private static void updateActiveSources() {
-        // Check if OpenAL context is available
+        // Check if OpenAL context is available'
         long context = ALC10.alcGetCurrentContext();
         if (context == 0) {
             return; // No context available
@@ -328,7 +328,7 @@ public abstract class SoundSystemMixin {
 //                System.out.println(tickQueue.peek().getId());
             }
         } catch (Exception e) {
-            // Ignore errors
+            // ignore errors
         }
     }
     /**
@@ -336,6 +336,7 @@ public abstract class SoundSystemMixin {
      */
     private static void applyReverbToSource(int sourceId) {
         try {
+            System.out.println(getDistanceFromWallEchoDenom() == 0 || getReverbDenom() == 0 || getOutdoorLeakDenom() == 0);
             if (getDistanceFromWallEchoDenom() == 0 || getReverbDenom() == 0 || getOutdoorLeakDenom() == 0)
                 return;
 
